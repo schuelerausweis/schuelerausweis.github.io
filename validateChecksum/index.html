@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <title>Validate Checksum</title>
+    <meta charset="utf8">
+    <style>
+        .content-centered {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3;
+            /* Light grey */
+            border-top: 16px solid #3498db;
+            /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content" class="content-centered">
+        <div>
+            <div class="content-centered">
+                <div class="loader"></div>
+            </div>
+            <p>Validating checksum from the server...</p>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const content = document.getElementById("content");
+        setTimeout(() => {
+            content.textContent = "Checksum = " + params.get("checksum") + "✓";
+        }, 1500)
+
+    </script>
+</body>
+
+</html>
